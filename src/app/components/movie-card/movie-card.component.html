@@ -1,0 +1,15 @@
+<mat-card (click)="clicked.emit(info.id)">
+    <mat-card-header>
+        <mat-card-title>
+            {{info.title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{info.release_date | date:"dd/MM/yyyy"}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        @if(info.poster_path){
+            <img [src]="'https://image.tmdb.org/t/p/w500'+info.poster_path" class="w-100 img-fluid"/>
+        }
+    </mat-card-content>
+</mat-card>

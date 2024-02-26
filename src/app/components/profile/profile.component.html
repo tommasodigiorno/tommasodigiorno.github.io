@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Form -->
+    <div class="col-4">
+      <mat-form-field class="w-100">
+        <mat-label>
+          <input
+            matInput
+            placeholder="Dimmi il tuo film preferito"
+            [(ngModel)]="favouriteMovie"
+            (ngModelChange)="changeOutcome($event)"
+          />
+        </mat-label>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="col-12">
+      <pre>
+            <code>{{favouriteMovie}}</code>
+        </pre>
+    </div>
+  </div>
+  <h2>Reactive Forms</h2>
+  <div class="row">
+    <form [formGroup]="profileForm" (submit)="handleSubmit()">
+      <div class="div col-4">
+        <mat-form-field class="w-100">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Dimmi il nome" formControlName="nome" />
+        </mat-form-field>
+      </div>
+      <div class="div col-4">
+        <mat-form-field class="w-100">
+          <mat-label>Cognome</mat-label>
+          <input
+            matInput
+            placeholder="Dimmi il cognome"
+            formControlName="cognome"
+          />
+        </mat-form-field>
+      </div>
+      <div class="div col-4">
+        <mat-form-field>
+          <mat-label>Data di nascita</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="dataNascita"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!profileForm.valid"
+      >
+        Stampa form
+      </button>
+    </form>
+  </div>
+</div>
